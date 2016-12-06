@@ -6,5 +6,6 @@ body {
 
 .editor {
     background-color: #ffffc4;
+    padding: 10px;
     height: 300px;
 }
