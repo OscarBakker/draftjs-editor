@@ -1,7 +1,7 @@
 require("!style!css!./style.css");
 import React from 'react';
 import {render} from 'react-dom';
-import { SpecialEditor } from './editor';
+import { SpecialEditor } from './Editor';
 
 class App extends React.Component {
   render () {
