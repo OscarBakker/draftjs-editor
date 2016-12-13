@@ -1,7 +1,9 @@
+var path = require('path');
+
 module.exports = {
-    entry: "./entry.js",
+    entry: "./client/entry.js",
     output: {
-        path: __dirname,
+        path: path.resolve(__dirname + '/client/'),
         filename: "bundle.js"
     },
     module: {
@@ -18,7 +20,6 @@ module.exports = {
             {
               test : /\.jsx?/,
               exclude: /(node_modules|bower_components)/,
-              include : './',
               loader : 'babel'
             }
         ]

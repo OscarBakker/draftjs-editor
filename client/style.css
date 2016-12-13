@@ -1,0 +1,314 @@
+@import url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+
+body {
+    background: #f3f3f3;
+}
+
+.editor {
+    background-color: #ffffc4;
+    padding: 10px;
+    height: 300px;
+}
+
+.preview-screen {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  margin-top: -50px;
+  margin-left: -50px;
+  width:700px;
+  height: 1000px;
+  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
+  -moz-box-shadow:    3px 3px 5px 6px #ccc;
+  box-shadow:         3px 3px 5px 6px #ccc;
+  opacity: 1;
+  animation: fade 0.5s linear;
+}
+
+@keyframes fade {
+  0% { opacity: 0 }
+  50% { opacity: 40 }
+  100% { opacity: 100 }
+}
+
+/* Some styling from page.css, a bootstrap enhancing library
+--------------------------------------------------
+*/
+/* To Load Hinted Fonts for Windows */
+html {
+  font-size: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  color: #737373;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+}
+/* Headings
+------------------------------------
+*/
+h1 {
+  margin: 10px 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-weight: 700;
+  color: #2c2c2c;
+  font-size: 2.827em;
+  line-height: 1.333em;
+  letter-spacing: -0.009em;
+}
+h1.mega {
+  font-size: 110px;
+  line-height: 1.333em;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  color: #2c2c2c;
+  font-size: 1.1em;
+  line-height: 1.7em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+h3 small,
+h4 small,
+h5 small {
+  font-weight: 300;
+}
+h1.block,
+h2.block,
+h3.block,
+h4.block,
+h5.block,
+h6.block {
+  margin-top: 20px;
+}
+.block-title {
+  font-family: 'Open Sans';
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.533em;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Wells
+------------------------------------
+*/
+.well {
+  background-color: #e6e6e6;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+  border: none;
+  background-image: none;
+}
+.well.well-large {
+  padding: 24px;
+  width: auto;
+}
+.well.well-small {
+  padding: 13px;
+  width: auto;
+}
+.well.green {
+  background-color: #44a3d8;
+  color: #ffffff;
+  border: none;
+}
+.overflow-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.jumbotron p {
+  font-size: 20px;
+  font-weight: normal;
+  margin-bottom: inherit;
+}
+.jumbotron p.small {
+  font-size: 85%;
+}
+
+.btn {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  font-weight: normal;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+  -moz-font-feature-settings: "kern" 1;
+  margin-bottom: 0;
+  border: 1px solid #f0f0f0;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  background-image: none !important;
+  color: #626262;
+  background-color: #ffffff;
+  text-shadow: none;
+  box-shadow: none;
+  line-height: 21px;
+  padding-left: 17px;
+  padding-right: 17px;
+  position: relative;
+  transition: color 0.1s linear 0s, background-color 0.1s linear 0s, opacity 0.2s linear 0s !important;
+}
+.btn:hover {
+  background-color: #fafafa;
+  border: 1px solid rgba(98, 98, 98, 0.27);
+}
+.btn.active {
+  border-color: #e6e6e6;
+  background: #fff;
+}
+.btn:focus,
+.btn:active:focus,
+.btn.active:focus {
+  outline: none !important;
+  outline-style: none;
+}
+.btn .caret {
+  margin-left: 3px;
+}
+.btn .caret.single {
+  margin-left: 0px;
+}
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn.disabled,
+.btn[disabled] {
+  box-shadow: none;
+}
+button:focus {
+  outline: none !important;
+}
+
+/*------------------------------------------------------------------
+[13. Form Elements]
+*/
+label,
+input,
+button,
+select,
+textarea {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 20px;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  margin-top: 1px 0 0;
+  line-height: normal;
+  cursor: pointer;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+select[multiple],
+select[size] {
+  height: auto !important;
+}
+input:focus,
+select:focus,
+textarea:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+form legend {
+  margin: 15px 0px 10px 0px;
+}
+.form-control {
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  font-family: Arial, sans-serif;
+  -webkit-appearance: none;
+  color: #2c2c2c;
+  outline: 0;
+  height: 35px;
+  padding: 9px 12px;
+  line-height: normal;
+  font-size: 14px;
+  font-weight: normal;
+  vertical-align: middle;
+  min-height: 35px;
+  -webkit-transition: all 0.12s ease;
+  transition: all 0.12s ease;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -webkit-transition: background 0.2s linear 0s;
+  transition: background 0.2s linear 0s;
+}
+.form-control:focus {
+  border-color: rgba(0, 0, 0, 0.1);
+  background-color: #f0f0f0;
+  outline: 0 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.form-control:focus::-moz-placeholder {
+  color: inherit;
+  opacity: 0.7;
+}
+.form-control:focus:-ms-input-placeholder {
+  color: inherit;
+  opacity: 0.7;
+}
+.form-control:focus::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.7;
+}
+.form-control::-moz-placeholder {
+  color: inherit;
+  opacity: 0.33;
+}
+.form-control:-ms-input-placeholder {
+  color: inherit;
+  opacity: 0.33;
+}
+.form-control::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.33;
+}
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
+  background: #f8f8f8;
+  color: rgba(98, 98, 98, 0.23);
+}
