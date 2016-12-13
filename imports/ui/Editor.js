@@ -4,21 +4,18 @@ import { Editor, EditorState, ContentState, RichUtils, convertFromHTML, convertF
 import { stateToHTML } from 'draft-js-export-html';
 import { Preview } from './Preview';
 import { replacePlaceholders } from '../lib/replacers';
+import { NewInput } from './NewInput';
 import _ from 'underscore';
 
 export class SpecialEditor extends React.Component {
   constructor(props) {
-    super(props);
+    super();
 
     this.state = {
       editorState: EditorState.createEmpty(),
 			contentState: '',
       currentHtml: '',
-      formData: {
-        name: '',
-        surname: '',
-        adress: '',
-      },
+      placeholderList: [],
     }
 
     // Set editor state for exporting data to html
@@ -31,11 +28,10 @@ export class SpecialEditor extends React.Component {
     this.setPlaceholderVal = this.setPlaceholderVal.bind(this);
   }
 
-  setPlaceholderVal(key, e) {
-    let newFormData = _.extend({}, this.state.formData);
-    newFormData[key] = e.target.value;
-    this.setState({formData: newFormData});
-    e.preventDefault();
+  setPlaceholderVal(obj) {
+    let newPlaceholderList = this.state.placeholderList;
+    newPlaceholderList.push(obj);
+    this.setState({placeholderList: newPlaceholderList});
   }
 
   removePreview() {
@@ -47,7 +43,7 @@ export class SpecialEditor extends React.Component {
   */
   getCurrentHtml() {
      let currentHtml = stateToHTML(this.state.editorState.getCurrentContent());
-     const newHtml = replacePlaceholders(currentHtml, this.state.formData);
+     const newHtml = replacePlaceholders(currentHtml, this.state.placeholderList);
      this.setState({currentHtml: newHtml});
   }
 
@@ -67,25 +63,31 @@ export class SpecialEditor extends React.Component {
       <div className="row">
         <div className="col-md-6 ">
           <div className="col-md-12 well">
-            <div className="form-group">
-              <label>Name</label>
-              <input className="form-control" onChange={this.setPlaceholderVal.bind(this, 'name')} />
-              <label>Surname</label>
-              <input className="form-control" onChange={this.setPlaceholderVal.bind(this, 'surname')} />
-              <label>Adress</label>
-              <input className="form-control" onChange={this.setPlaceholderVal.bind(this, 'adress')} />
-            </div>
+            <NewInput
+              setPlaceholderVal={this.setPlaceholderVal}
+            />
 
             <div className="form-group">
               <button onClick={this.getCurrentHtml} className="btn btn-success">Preview</button>
             </div>
+          </div>
+
+          <div className="col-md-12 well">
+            <h2>Placeholder list {this.state.placeholderList.length === 0 ? "is empty" : "" }</h2>
+              <ul>
+                {this.state.placeholderList.map((val, i) => {
+                  return (
+                    <li key={i} ><b>key:</b> {val.key} <b>value:</b> {val.value}</li>
+                  )
+                })}
+              </ul>
           </div>
         </div>
         
         <div className="col-md-6">
           <div className="col-md-12 well">
             <div className="alert alert-warning">
-              <p>Use curly braces for adding placeholder values between text:</p>
+              <p>Use curly braces for adding placeholder keys between text:</p>
               <p>Example: { "Hello {name} {surname} living at {adress}"} </p>
               <hr/>
               <p><b>Use command + b for bold</b></p>

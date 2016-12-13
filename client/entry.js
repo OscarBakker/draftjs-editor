@@ -7,7 +7,7 @@ class App extends React.Component {
   render () {
     return ( 
       <div className="container">
-        <h1>Draft editor!</h1>
+        <h1>Draft.js editor!</h1>
 
         <SpecialEditor/>
       </div>
